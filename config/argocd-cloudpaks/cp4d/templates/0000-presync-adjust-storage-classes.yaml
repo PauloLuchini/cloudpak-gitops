@@ -9,7 +9,15 @@ spec:
   template:
     spec:
       containers:
-        - name: config
+        - name: config     
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
           image: registry.redhat.io/openshift4/ose-cli:latest
           imagePullPolicy: IfNotPresent
           env:
