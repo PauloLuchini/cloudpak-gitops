@@ -50,7 +50,7 @@ spec:
 
               result=0
 
-              https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=cluster-installing-shared-components
+              # https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=cluster-installing-shared-components
               bin/apply-cluster-components \
                   --release=${VERSION:?} \
                   --license_acceptance=true \
