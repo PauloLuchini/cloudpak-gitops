@@ -75,14 +75,6 @@ spec:
               "${argo_cmd}" app get "${ARGOCD_APP_NAME}" --show-params
 
               exit ${result}
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
-            runAsNonRoot: true
-            seccompProfile:
-              type: RuntimeDefault
       restartPolicy: Never
       serviceAccountName: {{.Values.serviceaccount.argocd_application_controller}}
   backoffLimit: 2
