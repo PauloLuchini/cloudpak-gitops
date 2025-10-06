@@ -68,8 +68,7 @@ spec:
                   --release=${VERSION:?} \
                   --license_acceptance=true \
                   --licensing_ns=${PROJECT_LICENSE_SERVICE:?} \
-              && echo "INFO: Licensing service installed." \
-              || result=1
+              && echo "INFO: Licensing service installed." || result=1
 
 
               if [[ ${COMPONENTS:?} =~ cognos_analytics ]] \
