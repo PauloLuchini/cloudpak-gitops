@@ -65,7 +65,7 @@ spec:
 
               chmod 755 "${argo_cmd}" \
               && argo_pwd=$(oc get secret ${argo_secret} -n ${ARGOCD_NAMESPACE} -ojsonpath='{.data.admin\.password}' | base64 -d ; echo ) \
-              && "${argo_cmd}" login "${argo_url}" --username admin --password "${argo_pwd}" --insecure \
+              && "${argo_cmd}" login "${argo_url}" --username admin --password "${argo_pwd}" --insecure --skip-test-tls --grpc-web\
               && "${argo_cmd}" app set "${ARGOCD_APP_NAME}" \
                   --helm-set-string storageclass.rwo="${storage_class_rwo}" \
                   --helm-set-string storageclass.rwx="${storage_class_rwx}" \
