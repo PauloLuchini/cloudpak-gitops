@@ -19,8 +19,8 @@ storageclass:
 iam_integration: true
 
 # suffix for labels for the olm-v2 utils image
-image_arch: ""
+image_arch: "-v3"
 # image_arch: .s390x
 # image_arch: .ppc64le
 
-version: 5.2.0
+version: 5.2.1
