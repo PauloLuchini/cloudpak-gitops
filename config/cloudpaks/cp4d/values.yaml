@@ -16,6 +16,6 @@ storageclass:
 targetRevision: main
 
 iam_integration: "set in presync-hook of parent app"
-image_arch: "set in parent app"
+image_arch: "-v3"
 
 version: "set in parent app"
