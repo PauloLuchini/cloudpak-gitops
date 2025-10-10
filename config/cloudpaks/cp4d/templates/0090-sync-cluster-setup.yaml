@@ -107,4 +107,4 @@ spec:
       restartPolicy: Never
       serviceAccountName: {{.Values.serviceaccount.argocd_application_controller}}
 
-  backoffLimit: 1
+  backoffLimit: 4
