@@ -178,7 +178,6 @@ spec:
                   echo "ERROR: Unable to get status of cert managers in the cluster."
               fi
 
-              exit "${result}"
               odlm_count=$(oc get Subscription.operators.coreos.com \
                     -l operators.coreos.com/operand-deployment-lifecycle-manager.openshift-operators \
                     -A \
@@ -240,6 +239,7 @@ spec:
               else
                   echo "ERROR: Unable to get status of ODLM in the cluster."
               fi
+              exit "${result}"
       restartPolicy: Never
       serviceAccountName: {{.Values.serviceaccount.argocd_application_controller}}
   backoffLimit: 2
