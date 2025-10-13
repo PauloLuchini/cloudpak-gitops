@@ -10,7 +10,8 @@ metadata:
   operands_namespace: cp4d-operands
 
 # https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=information-determining-which-components-install
-components: ibm-cert-manager,ibm-licensing,cpfs,cpd_platform,rstudio,wml,ws
+# components: ibm-cert-manager,ibm-licensing,cpfs,cpd_platform,rstudio,wml,ws
+components: ibm-cert-manager,ibm-licensing,cpfs,cpd_platform,datastage_ent,ikc_standard,watsonx_data
 
 storageclass:
   rwo: ocs-storagecluster-ceph-rbd
