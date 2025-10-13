@@ -177,68 +177,6 @@ spec:
               else
                   echo "ERROR: Unable to get status of cert managers in the cluster."
               fi
-
-              odlm_count=$(oc get Subscription.operators.coreos.com \
-                    -l operators.coreos.com/operand-deployment-lifecycle-manager.openshift-operators \
-                    -A \
-                    -o name | wc -l || result=1)
-
-              if [ "${result}" == 0 ]; then
-                  if [ "${odlm_count}" == "0" ]; then
-                      echo "INFO: Installing ODLM."
-                      cat << EOF | oc apply -f -
-              ---
-              kind: Namespace
-              apiVersion: v1
-              metadata:
-                name: ${ODLM_NAMESPACE:?}
-              ---
-              apiVersion: operators.coreos.com/v1
-              kind: OperatorGroup
-              metadata:
-                name: ${ODLM_OPERATOR_GROUP:?}
-                namespace: ${ODLM_NAMESPACE:?}
-              spec:
-                targetNamespaces:
-                  - ${ODLM_NAMESPACE:?}
-              ---
-              apiVersion: operators.coreos.com/v1alpha1
-              kind: Subscription
-              metadata:
-                name: operand-deployment-lifecycle-manager
-                namespace: ${ODLM_NAMESPACE:?}
-              spec:
-                channel: ${ODLM_CHANNEL:?}
-                installPlanApproval: Automatic
-                name: operand-deployment-lifecycle-manager
-                source: ibm-operator-catalog
-                sourceNamespace: openshift-marketplace
-              EOF
-
-                      while [ $SECONDS -lt 300 ]; do
-                          oc wait Subscription.operators.coreos.com operand-deployment-lifecycle-manager \
-                              -n ${ODLM_NAMESPACE:?} \
-                              --for=condition=CatalogSourcesUnhealthy=False \
-                          && oc wait Subscription.operators.coreos.com operand-deployment-lifecycle-manager \
-                              -n ${ODLM_NAMESPACE:?} \
-                              --for=jsonpath='{.status.state}'="AtLatestKnown" \
-                          && echo "INFO: Successfully installed ODLM." \
-                          && result=0 \
-                          && break \
-                          || result=1
-
-                          echo "INFO: Waiting for the subscription to be ready."
-                          sleep 20
-                      done
-                  else
-                      echo "INFO: ODLM already installed."
-                      oc get Subscription.operators.coreos.com \
-                          -l operators.coreos.com/operand-deployment-lifecycle-manager.openshift-operators \
-                          -A
-                  fi
-              else
-                  echo "ERROR: Unable to get status of ODLM in the cluster."
-              fi
               exit "${result}"
       restartPolicy: Never
       serviceAccountName: {{.Values.serviceaccount.argocd_application_controller}}
