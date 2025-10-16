@@ -20,7 +20,7 @@ spec:
 
 
 
-icr.io/cpopen/ibm-operator-catalog:latest
+# icr.io/cpopen/ibm-operator-catalog:latest
 
     
 # spec:
