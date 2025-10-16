@@ -11,7 +11,6 @@ spec:
   grpcPodConfig:
     securityContextConfig: restricted
     image: 'icr.io/cpopen/ibm-cpd-pltform-operator-catalog:latest'
-  # image: 'icr.io/cpopen/ibm-cpd-platform-operator-catalog@sha256:d19fd0db2590a6f615ceef5fef9db3bc56206b319942fe4c1cf6eca171c089b5'
   publisher: IBM
   sourceType: grpc
   updateStrategy:
@@ -21,8 +20,9 @@ spec:
 
 
 # icr.io/cpopen/ibm-operator-catalog:latest
+# image: 'icr.io/cpopen/ibm-cpd-platform-operator-catalog@sha256:d19fd0db2590a6f615ceef5fef9db3bc56206b319942fe4c1cf6eca171c089b5'
 
-    
+
 # spec:
 #   displayName: "IBM Operator Catalog"
 #   priority: {{.Values.online_catalog_source_priority}}
