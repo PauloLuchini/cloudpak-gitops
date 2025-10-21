@@ -15,7 +15,7 @@ spec:
   sourceType: grpc
   updateStrategy:
     registryPoll:
-      interval: 30m0s
+      interval: 45m
 
 
 
