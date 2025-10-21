@@ -84,7 +84,7 @@ spec:
                 channel: ${IBM_CERT_MANAGER_CHANNEL:?}
                 installPlanApproval: Automatic
                 name: ibm-cert-manager-operator
-                source: ibm-operator-catalog
+                source: opencloud-operators
                 sourceNamespace: openshift-marketplace
               EOF
 
